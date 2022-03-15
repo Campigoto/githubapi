@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from 'pages/Home';
 import Navbar from 'components/Navbar';
-import CepSearch from 'pages/CepSearch';
+import CepSearch from 'pages/GitSearch';
 
 const Routes = () => (
   <BrowserRouter>
@@ -10,7 +10,7 @@ const Routes = () => (
       <Route path="/" exact>
         <Home />
       </Route>
-      <Route path="/cepsearch">
+      <Route path="/gitsearch">
         <CepSearch />
       </Route>
     </Switch>

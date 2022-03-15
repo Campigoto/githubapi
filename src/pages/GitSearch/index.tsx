@@ -4,13 +4,11 @@ import ResultCard from 'components/ResultCard';
 import { useState } from 'react';
 import axios from 'axios';
 
-
 type FormData = {
   login: string;
 };
 
-type Profile =
-{
+type Profile = {
   url: string;
   name: string;
   followers: string;
@@ -18,9 +16,7 @@ type Profile =
   avatar_url: string;
 };
 
-const CepSearch = () => {
-
-
+const GitSearch = () => {
   const [profile, setProfile] = useState<Profile>();
   const [formData, setFormData] = useState<FormData>({
     login: '',
@@ -36,7 +32,7 @@ const CepSearch = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-  axios
+    axios
       .get(`https://api.github.com/users/${formData?.login}`)
       .then((response) => {
         setProfile(response.data);
@@ -47,8 +43,8 @@ const CepSearch = () => {
   };
 
   return (
-    <div className="cep-search-container">
-      <h1 className="text-primary">Encontre um perfil Github</h1>
+    <div className="git-search-container">
+      <h1>Encontre um perfil Github</h1>
       <div className="container search-container">
         <form onSubmit={handleSubmit}>
           <div className="form-container">
@@ -65,21 +61,28 @@ const CepSearch = () => {
             </button>
           </div>
         </form>
-
+        <div></div>
+      </div>
+      <div>
         {profile && (
           <>
-        <ResultCard title="Perfil: " description={profile.url} />
-        <ResultCard title="Seguidores: " description={profile.followers} />
-        <ResultCard title="Localidade: " description={profile.location} />
-        <ResultCard title="Nome: " description={profile.name} />
-        <div className="card-top-container">
+            <div className="card-result">
+              <ResultCard title="Perfil: " description={profile.url} />
+              <ResultCard
+                title="Seguidores : "
+                description={profile.followers}
+              />
+              <ResultCard title="Localidade : " description={profile.location} />
+              <ResultCard title="Nome :  " description={profile.name} />
+              <div className="card-image-container">
                 <img src={profile.avatar_url} alt="Foto" />
+              </div>
             </div>
-        </> 
+          </>
         )}
       </div>
     </div>
   );
 };
 
-export default CepSearch;
+export default GitSearch;
