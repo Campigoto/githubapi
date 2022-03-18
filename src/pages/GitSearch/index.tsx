@@ -57,26 +57,28 @@ const GitSearch = () => {
               onChange={handleChange}
             />
             <button type="submit" className="btn btn-primary search-button">
-              Buscar
+              Encontrar
             </button>
           </div>
         </form>
-        <div></div>
       </div>
-      <div>
+      <div className="card-container">
         {profile && (
           <>
+            <div className="card-image-container">
+              <img src={profile.avatar_url} alt="Foto" />
+            </div>
             <div className="card-result">
               <ResultCard title="Perfil: " description={profile.url} />
               <ResultCard
                 title="Seguidores : "
                 description={profile.followers}
               />
-              <ResultCard title="Localidade : " description={profile.location} />
+              <ResultCard
+                title="Localidade : "
+                description={profile.location}
+              />
               <ResultCard title="Nome :  " description={profile.name} />
-              <div className="card-image-container">
-                <img src={profile.avatar_url} alt="Foto" />
-              </div>
             </div>
           </>
         )}
